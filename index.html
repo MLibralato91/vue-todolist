@@ -19,22 +19,45 @@
 <body>
 
     <div id="app">
-        <div class="container">
-            <h1>Che se magna a pasquetta?</h1>
-            <div>
-                <input type="text" name="newItem" id="newItem" v-model="newItem.name" @keyup.enter ='addItem'>
-                <button class="btn btn-danger" @click="addItem">Aggiungi alla Lista</button>
-            </div>
-            <ul v-if="shoppingList.length > 0">
-                <li v-for="(singleItem, index) of shoppingList" :key="index">
-                    <span>{{singleItem.name}}</span>
-                    <button @click="deleteItem(index)">Cancella</button>
-                    <button>Fatto</button>
-                </li>
-            </ul>
-            <h3 v-else >La lista della spesa è vuota</h3>
-        </div>
+        <section class="vh-100" style="background-color: #e2d5de;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-xl-10">
 
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+
+                                <h6 class="mb-3">Lista della spesa</h6>
+
+                                <div class="d-flex justify-content-center align-items-center mb-4">
+                                    <div class="form-outline flex-fill">
+                                        <input class="form-control form-control-lg" type="text" name="newItem"
+                                            id="newItem" v-model="newIngredient" @keyup.enter='addItem' />
+                                        <label class="form-label" for="form3">Cosa ti manca nel frigorifero??</label>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-lg ms-2"
+                                        @click="addItem">Add</button>
+                                </div>
+                                <ul v-if="shoppingList.length > 0" class="list-group mb-0">
+                                    <li v-for="(singleItem, index) of shoppingList" :key="index"
+                                        :class="shoppingList[index].completed ? 'text-decoration-line-through' : ''"
+                                        class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2">
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input me-2" type="checkbox" value=""
+                                                aria-label="..." @click="done(index)" />
+                                            <span>{{singleItem.name}}</span>
+                                        </div>
+                                        <a href="#!" data-mdb-toggle="tooltip" title="Remove item">
+                                            <i class="fas fa-times text-primary" @click="deleteItem(index)"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
