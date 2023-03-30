@@ -29,11 +29,11 @@ createApp({
     return {
       shoppingList: [
         {
-          name: 'pane',
+          name: 'Pane',
           completed: false
         },
         {
-          name: 'pane',
+          name: 'Latte',
           completed: false
         },
       ],

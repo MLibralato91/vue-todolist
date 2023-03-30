@@ -32,10 +32,10 @@
                                 <div class="d-flex justify-content-center align-items-center mb-4">
                                     <div class="form-outline flex-fill">
                                         <input class="form-control form-control-lg" type="text" name="newItem"
-                                            id="newItem" v-model="newIngredient" @keyup.enter='addItem' />
-                                        <label class="form-label" for="form3">Cosa ti manca nel frigorifero??</label>
+                                            id="newItem" v-model="newIngredient" @keyup.enter='addItem' placeholder="Cosa ti manca nel frigorifero?" />
+                                        
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-lg ms-2"
+                                    <button type="button" class="btn btn-primary btn-lg ms-1"
                                         @click="addItem">Add</button>
                                 </div>
                                 <ul v-if="shoppingList.length > 0" class="list-group mb-0">
@@ -52,6 +52,7 @@
                                         </a>
                                     </li>
                                 </ul>
+                                <h3 v-else class="text-danger">La lista della spesa è vuota</h3>
                             </div>
                         </div>
                     </div>
