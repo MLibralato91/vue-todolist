@@ -27,7 +27,7 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
 
-                                <h6 class="mb-3">Lista della spesa</h6>
+                                <h2 class="mb-3 text-primary">Lista della spesa</h2>
 
                                 <div class="d-flex justify-content-center align-items-center mb-4">
                                     <div class="form-outline flex-fill">
@@ -37,7 +37,9 @@
                                     </div>
                                     <button type="button" class="btn btn-primary btn-lg ms-1"
                                         @click="addItem">Add</button>
+                                        
                                 </div>
+                                <h6 v-if="empty" class="text-warning">!!Scrivi cosa vuoi comprare!!</h6>
                                 <ul v-if="shoppingList.length > 0" class="list-group mb-0">
                                     <li v-for="(singleItem, index) of shoppingList" :key="index"
                                         :class="shoppingList[index].completed ? 'text-decoration-line-through' : ''"

@@ -39,13 +39,16 @@ createApp({
       ],
 
       newIngredient: '',
-
+      empty: false
     }
 
   },
   methods: {
     addItem() {
-
+      if (!this.newIngredient) {
+        this.empty = true
+        return
+    }
       newItem = {
         name: this.newIngredient,
         completed: false
