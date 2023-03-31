@@ -25,52 +25,63 @@ Bonus:
 const { createApp } = Vue
 
 createApp({
-  data() {
-    return {
-      shoppingList: [
-        {
-          name: 'Pane',
+   data() {
+      return {
+         shoppingList: [
+            {
+               name: 'Pane',
+               completed: false
+            },
+            {
+               name: 'Latte',
+               completed: false
+            },
+         ],
+         //possibilità di creare un oggetto e clonarlo con lo spread {...newItem}
+         /*
+         newItem {
+          name: '',
           completed: false
-        },
-        {
-          name: 'Latte',
-          completed: false
-        },
-      ],
-
-      newIngredient: '',
-      empty: false
-    }
-
-  },
-  methods: {
-    addItem() {
-      if (!this.newIngredient) {
-        this.empty = true
-        return
-    }
-      newItem = {
-        name: this.newIngredient,
-        completed: false
-      };
-      this.shoppingList.push(newItem);
-      this.newIngredient = '';
-
-    },
-    deleteItem(index) {
-      this.shoppingList.splice(index, 1)
-    },
-    done(index) {
-      if (this.shoppingList[index].completed) {
-        this.shoppingList[index].completed = false;
-      } else {
-        this.shoppingList[index].completed = true;
+         }
+         */
+         newIngredient: '',
+         empty: false
       }
-    },
+
+   },
+   methods: {
+      addItem() {
+         if (!this.newIngredient) {
+            this.empty = true
+            return
+         }
+
+         /*
+          this.shoppingList.unschif({...this.newItem})
+          this.newIteam.name = '';
+          */
+         newItem = {
+            name: this.newIngredient,
+            completed: false
+         };
+         this.shoppingList.unshift(newItem);
+         this.newIngredient = '';
+
+      },
+      deleteItem(index) {
+         this.shoppingList.splice(index, 1)
+      },
+      done(index) {
+         if (this.shoppingList[index].completed) {
+            this.shoppingList[index].completed = false;
+         } else {
+            this.shoppingList[index].completed = true;
+         }
+      },
 
 
-  },
-  mounted() {
+   },
+   mounted() {
 
-  }
+   }
 }).mount('#app')

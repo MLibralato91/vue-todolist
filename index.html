@@ -2,70 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://kit.fontawesome.com/1e3be9b4ce.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Vue To Do List</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/1e3be9b4ce.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Vue To Do List</title>
 
 </head>
 
 <body>
-
-    <div id="app">
-        <section class="vh-100" style="background-color: #e2d5de;">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col col-xl-10">
-
-                        <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-5">
-
-                                <h2 class="mb-3 text-primary">Lista della spesa</h2>
-
-                                <div class="d-flex justify-content-center align-items-center mb-4">
-                                    <div class="form-outline flex-fill">
-                                        <input class="form-control form-control-lg" type="text" name="newItem"
-                                            id="newItem" v-model="newIngredient" @keyup.enter='addItem' placeholder="Cosa ti manca nel frigorifero?" />
-                                        
-                                    </div>
-                                    <button type="button" class="btn btn-primary btn-lg ms-1"
-                                        @click="addItem">Aggiungi</button>
-                                        
-                                </div>
-                                <h6 v-if="empty" class="text-warning">!!Scrivi cosa vuoi comprare!!</h6>
-                                <ul v-if="shoppingList.length > 0" class="list-group mb-0">
-                                    <li v-for="(singleItem, index) of shoppingList" :key="index"
-                                        :class="shoppingList[index].completed ? 'text-decoration-line-through' : ''"
-                                        class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2">
-                                        <div class="d-flex align-items-center">
-                                            <input class="form-check-input me-2" type="checkbox" value=""
-                                                aria-label="..." @click="done(index)" />
-                                            <span>{{singleItem.name}}</span>
-                                        </div>
-                                        <a href="#!" data-mdb-toggle="tooltip" title="Remove item">
-                                            <i class="fas fa-times text-primary" @click="deleteItem(index)"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <h3 v-else class="text-danger">La lista della spesa è vuota</h3>
-                            </div>
-                        </div>
-                    </div>
+  <div id="app">
+    <section class="vh-100" style="background-color: #e2d5de;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-xl-10">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="mb-3 text-primary">Lista della spesa</h2>
+                <div class="d-flex justify-content-center align-items-center mb-4">
+                  <div class="form-outline flex-fill">
+                    <input class="form-control form-control-lg" type="text" name="newItem" id="newItem"
+                      v-model="newIngredient" @keyup.enter='addItem' placeholder="Cosa ti manca nel frigorifero?" />
+                  </div>
+                  <button type="button" class="btn btn-primary btn-lg ms-1" @click="addItem">Aggiungi</button>
                 </div>
+                <h6 v-if="empty" class="text-warning">!!Scrivi cosa vuoi comprare!!</h6>
+                <ul v-if="shoppingList.length > 0" class="list-group mb-0">
+                  <li v-for="(singleItem, index) of shoppingList" :key="index"
+                    :class="shoppingList[index].completed ? 'text-decoration-line-through' : ''"
+                    class="list-group-item d-flex justify-content-between align-items-center border-start-0 border-top-0 border-end-0 border-bottom rounded-0 mb-2">
+                    <div class="d-flex align-items-center">
+                      <input class="form-check-input me-2" type="checkbox" value="" aria-label="..."
+                        @click="done(index)" />
+                      <span>{{singleItem.name}}</span>
+                    </div>
+                    <a href="#!" data-mdb-toggle="tooltip" title="Remove item">
+                      <i class="fas fa-times text-primary" @click="deleteItem(index)"></i>
+                    </a>
+                  </li>
+                </ul>
+                <h3 v-else class="text-danger">La lista della spesa è vuota</h3>
+              </div>
             </div>
-        </section>
-    </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <script src="./js/script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
